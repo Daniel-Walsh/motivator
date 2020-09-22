@@ -1,30 +1,42 @@
-import React from 'react';
-// import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import { PuffLoader } from 'react-spinners';
+import CloseButton from './close.js';
+
+// Import styles
 import './App.scss';
 
-import quotes from './quotes.json';
+// Import entries
+import entries from './entries.json';
 
 function App() {
-  var quote = quotes[Math.floor(Math.random() * quotes.length)];
+  const quote = entries[Math.floor(Math.random() * entries.length)];
+  const words = quote.quote.split(' ').length;
+  const quoteClass = (words <= 10) ? 'quote-sm' : 'quote-lg';
+  
+  useEffect(() => {
+    window.addEventListener('load', e => {
+      document.getElementById('quotes')?.classList.add('loaded');
+    });
+  }, []);
+
+  const closeMotivator = () => {
+    window.close();
+  };
 
   return (
-    <div className="app loaded">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <div id="app">
+      <div id="loader">
+        <p>Seeking wisdom...</p>
+        <PuffLoader color="#fff" />
+      </div>
+      <div id="quotes">
+        <div id="quote" className={quoteClass}>{quote.quote}</div>
+        <div id="source">{quote.source}</div>
+      </div>
+      {/* eslint-disable-next-line */}
+        <a id="close" href="#" onClick={closeMotivator}>
+          <CloseButton />
         </a>
-      </header> */}
-      <div id="quote">{quote.quote}</div>
-      <div id="source">{quote.source}</div>
     </div>
   );
 }

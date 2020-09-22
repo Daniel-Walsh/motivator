@@ -5,39 +5,123 @@ body {
     height: 100%;
     font-size: 16px;
     color: #fff;
+    background-color: #333;
 }
 
-.app {
+#app {
+    position: relative;
+}
+
+#loader,
+#quotes {
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 100%/cover no-repeat url(https://source.unsplash.com/collection/1053828/1600x900);
-    opacity: 0;
+}
 
-    &.loaded {
-        opacity: 1;
+#loader {
+    p {
+        font-size: 1.5rem;
     }
 }
 
-#quote {
-    font-size: 2.25rem;
-    font-weight: bold;
-    margin-bottom: 1.5rem;
-    max-width: 750px;
-    padding: 0 2rem;
-    text-align: center;
+$bgFade: rgba(0,0,0,0.75);
+
+#quotes {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient($bgFade, $bgFade), 100%/cover no-repeat url(https://source.unsplash.com/collection/1053828/1600x900);
+    opacity: 0;
+    // transition: opacity 0.5s ease-in-out;
+
+    #quote {
+        font-family: 'La Belle Aurore', cursive;
+        // font-size: 2.25rem;
+        font-size: 3rem;
+        line-height: 1.125;
+    
+        font-weight: bold;
+        margin-bottom: 3rem;
+        padding: 0 2rem;
+        text-align: center;
+        
+        &.quote-sm {
+            max-width: 550px;
+        }
+    
+        &.quote-lg {
+            max-width: 800px;
+        }
+    }
+    
+    #source {
+        font-size: 1.5rem;
+        max-width: 750px;
+        padding: 0 2rem;
+        text-align: center;
+        font-style: italic;
+        font-weight: bold;
+        opacity: .75;
+    }
+
+    &.loaded {
+        animation: showBg 2s ease-in-out 0s 1 forwards;
+        
+        #quote {
+            animation: showQuote 2s ease-in-out 0s 1 forwards;
+        }
+        
+        #source {
+            animation: showSource 2s ease-in-out 0s 1 forwards;
+        }
+    }
 }
 
-#source {
-    font-size: 1.5rem;
-    max-width: 750px;
-    padding: 0 2rem;
-    text-align: center;
-    font-style: italic;
+
+#close {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 2rem;
+    color: white;
+    opacity: .7;
+    width: 2rem;
+    height: 2rem;
+
+    svg {
+        width: 2rem;
+        height: 2rem;
+    }
 }
 
 #source:before {
     content: "— ";
+}
+
+@keyframes showBg {
+    0% { opacity: 0; }
+    40% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+@keyframes showQuote {
+    0% { opacity: 0; }
+    40% { opacity: 0; transform: translateY(1rem); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes showSource {
+    0% { opacity: 0; }
+    60% { opacity: 0; transform: translateY(1rem); }
+    100% { opacity: 1; transform: translateY(0); }
 }
