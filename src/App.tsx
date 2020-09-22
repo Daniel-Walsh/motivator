@@ -26,8 +26,8 @@ function App() {
   return (
     <div id="app">
       <div id="loader">
-        <p>Seeking wisdom...</p>
-        <PuffLoader color="#fff" />
+        <p>&nbsp;&nbsp;&nbsp;Seeking wisdom...</p>
+        <PuffLoader color="#fff" size="70px" />
       </div>
       <div id="quotes">
         <div id="quote" className={quoteClass}>{quote.quote}</div>
