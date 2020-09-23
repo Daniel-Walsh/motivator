@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PuffLoader } from 'react-spinners';
-import CloseButton from './close.js';
+import RefreshButton from './refresh.js';
 
 // Import styles
 import './App.scss';
@@ -12,6 +12,10 @@ function App() {
   const quote = entries[Math.floor(Math.random() * entries.length)];
   const words = quote.quote.split(' ').length;
   const quoteClass = (words <= 10) ? 'quote-sm' : 'quote-lg';
+
+  let randomEntry = entries[Math.floor(Math.random() * entries.length)];
+
+  const [entry, setEntry] = useState({quote: randomEntry.quote, source: randomEntry.source});
   
   useEffect(() => {
     window.addEventListener('load', e => {
@@ -19,8 +23,9 @@ function App() {
     });
   }, []);
 
-  const closeMotivator = () => {
-    window.close();
+  const pickRandomEntry = () => {
+    let randomEntry = entries[Math.floor(Math.random() * entries.length)]
+    setEntry({quote: randomEntry.quote, source: randomEntry.source});
   };
 
   return (
@@ -30,12 +35,12 @@ function App() {
         <PuffLoader color="#fff" size="70px" />
       </div>
       <div id="quotes">
-        <div id="quote" className={quoteClass}>{quote.quote}</div>
-        <div id="source">{quote.source}</div>
+        <div id="quote" className={quoteClass}>{entry.quote}</div>
+        <div id="source">{entry.source}</div>
       </div>
       {/* eslint-disable-next-line */}
-        <a id="close" href="#" onClick={closeMotivator}>
-          <CloseButton />
+        <a id="close" href="#" onClick={pickRandomEntry}>
+          <RefreshButton />
         </a>
     </div>
   );
