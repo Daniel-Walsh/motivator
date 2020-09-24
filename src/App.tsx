@@ -49,7 +49,8 @@ function App() {
     };
   });
 
-  const setRandomEntry = () => {
+  const setRandomEntry = (e:React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
     setEntry(pickRandomEntry());
   };
   
