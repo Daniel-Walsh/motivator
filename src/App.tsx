@@ -20,12 +20,12 @@ const nowStamp = (+ new Date()).toString();
 const quoteBg = `linear-gradient(${bgFade}, ${bgFade}), 100%/cover no-repeat url(https://source.unsplash.com/collection/99958844/1600x900?r=${nowStamp})`;
 
 function App() {
-  const getEntryClass = (entryText: string) => {
+  const getEntryClass = (entryText:string) => {
     const totalWords = entryText.split(' ').length;
     return (totalWords <= 10) ? 'quote-sm' : 'quote-lg';
   };
 
-  const pickRandomEntry = (): Entry => {
+  const pickRandomEntry = ():Entry => {
     let randomEntry = entries[Math.floor(Math.random() * entries.length)];
     return {
       quote: randomEntry.quote,
