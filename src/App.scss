@@ -80,7 +80,7 @@ body {
 }
 
 
-#close {
+#refresh {
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -102,6 +102,23 @@ body {
 
 #source:before {
     content: "— ";
+}
+
+#datetime {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 2rem;
+    opacity: .7;
+
+    #time {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    
+    #date {
+        font-size: 1.5rem;
+    }
 }
 
 @keyframes showBg {
