@@ -15,6 +15,9 @@ type Entry = {
 }
 
 function App() {
+  const bgFade = 'rgba(0,0,0,0.75)';
+  const nowStamp = (+ new Date()).toString();
+
   const getEntryClass = (entryText: string) => {
     const totalWords = entryText.split(' ').length;
     return (totalWords <= 10) ? 'quote-sm' : 'quote-lg';
@@ -47,7 +50,7 @@ function App() {
         <p>&nbsp;&nbsp;&nbsp;Seeking wisdom...</p>
         <PuffLoader color="#fff" size="70px" />
       </div>
-      <div id="quotes">
+      <div id="quotes" style={{background: `linear-gradient(${bgFade}, ${bgFade}), 100%/cover no-repeat url(https://source.unsplash.com/collection/99958844/1600x900?r=${nowStamp})`}}>
         <div id="quote" className={entry.class}>{entry.quote}</div>
         <div id="source">{entry.source}</div>
       </div>
