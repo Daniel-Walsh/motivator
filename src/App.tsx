@@ -70,7 +70,6 @@ function App() {
         <div id="quote" className={entry.class}>{entry.quote}</div>
         <div id="source">{entry.source}</div>
       </div>
-      {/* eslint-disable-next-line */}
       <a id="refresh" href="#" onClick={setRandomEntry}>
         <RefreshButton />
       </a>
