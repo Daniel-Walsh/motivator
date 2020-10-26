@@ -46,6 +46,11 @@ body {
     margin-bottom: 3rem;
     padding: 0 2rem;
     text-align: center;
+    
+    /* Make the quotes gold */
+    background: linear-gradient(to bottom, #D4AF37 0%, #C5A028 100%);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 
     &.quote-sm {
       max-width: 550px;
