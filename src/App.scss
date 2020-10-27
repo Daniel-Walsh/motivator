@@ -102,6 +102,11 @@ body {
   svg {
     width: 2rem;
     height: 2rem;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  &:hover svg {
+    transform: rotate(45deg);
   }
 }
 
