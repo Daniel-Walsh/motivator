@@ -72,6 +72,17 @@ function App() {
           {entry.quote}
         </div>
         <div id="source">{entry.source}</div>
+        <input
+          type="text"
+          name="search"
+          id="search"
+          placeholder="Search..."
+          onKeyPress={(event) => {
+            if (event.key === "Enter") {
+              window.location.href = `http://duckduckgo.com/?q=${event.currentTarget.value}`;
+            }
+          }}
+        />
       </div>
       {/* eslint-disable-next-line */}
       <a id="refresh" href="#" onClick={setRandomEntry}>

@@ -37,6 +37,20 @@ body {
   right: 0;
   opacity: 0;
 
+  #search {
+    margin-top: 2rem;
+    font-size: 1.25rem;
+    padding: 0.5rem 1rem;
+    border-radius: 3rem;
+    overflow: hidden;
+    border: 0;
+    background: rgba(255, 255, 255, 0.45);
+    color: rgba(0, 0, 0, 1);
+    &::placeholder {
+      color: rgba(0, 0, 0, 1);
+    }
+  }
+
   #quote {
     font-family: "Roboto Condensed", sans-serif;
     text-transform: uppercase;
@@ -46,13 +60,13 @@ body {
     padding: 0 2rem;
     text-align: center;
     font-size: 1.75rem;
-    
+
     @media screen and (min-width: 768px) {
       font-size: 3rem;
     }
-    
+
     /* Make the quotes gold */
-    background: linear-gradient(to bottom, #D4AF37 0%, #C5A028 100%);
+    background: linear-gradient(to bottom, #d4af37 0%, #c5a028 100%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 
@@ -75,7 +89,7 @@ body {
     opacity: 0.75;
     line-height: 1.25;
     font-size: 1.5rem;
-    
+
     @media screen and (min-width: 768px) {
       font-size: 2rem;
     }
@@ -111,9 +125,9 @@ body {
   svg {
     width: 2rem;
     height: 2rem;
-    transition: transform .4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  
+
   @media (hover: hover) {
     &:hover svg {
       transform: rotate(45deg);
@@ -132,11 +146,11 @@ body {
   margin: 2rem;
   opacity: 0.7;
   display: none;
-    
+
   @media screen and (min-width: 768px) {
     display: block;
   }
-  
+
   #time {
     font-size: 3rem;
     font-weight: bold;
